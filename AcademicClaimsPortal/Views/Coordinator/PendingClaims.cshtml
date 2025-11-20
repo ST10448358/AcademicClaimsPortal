@@ -1,0 +1,63 @@
+﻿@model List<AcademicClaimsPortal.Models.Claim>
+
+@{
+    ViewData["Title"] = "Pending Claims Review";
+}
+
+<h2>Pending Claims for Review</h2>
+
+@if (Model.Any())
+{
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>Claim Reference</th>
+                <th>Lecturer</th>
+                <th>Department</th>
+                <th>Hours</th>
+                <th>Rate</th>
+                <th>Total</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var claim in Model)
+            {
+                <tr>
+                    <td>@claim.ClaimReference</td>
+                    <td>@claim.LecturerName</td>
+                    <td>@claim.Department</td>
+                    <td>@claim.HoursWorked</td>
+                    <td>R @claim.HourlyRate</td>
+                    <td>R @claim.TotalAmount</td>
+                    <td>
+                        <form asp-action="ApproveClaim" method="post" style="display:inline;">
+                            <input type="hidden" name="id" value="@claim.Id" />
+                            <button type="submit" class="btn btn-success btn-sm">Approve</button>
+                        </form>
+                        <form asp-action="RejectClaim" method="post" style="display:inline;">
+                            <input type="hidden" name="id" value="@claim.Id" />
+                            <button type="submit" class="btn btn-danger btn-sm">Reject</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+else
+{
+    <div class="alert alert-info">
+        No pending claims found.
+    </div>
+}
+<div class="mb-3">
+    <a href="/Coordinator/CreateReport" class="btn btn-info">Create Report to Manager</a>
+</div>
+
+<div class="mt-4">
+    <a href="/Home/Index" class="btn btn-outline-dark">
+        <i class="fas fa-home"></i> Back to Home
+    </a>
+</div>
+

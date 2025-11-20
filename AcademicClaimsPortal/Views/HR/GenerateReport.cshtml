@@ -1,0 +1,44 @@
+﻿@model dynamic
+
+@{
+    ViewData["Title"] = "Generate Reports";
+}
+
+<h2>Generate Management Reports</h2>
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Report Summary</h5>
+        <p><strong>Report Type:</strong> @Model.ReportType</p>
+        <p><strong>Generated:</strong> @Model.GeneratedDate</p>
+        <p><strong>Total Claims:</strong> @Model.TotalClaims</p>
+        <p><strong>Total Amount:</strong> R @Model.TotalAmount</p>
+
+        <h6>Claims by Status:</h6>
+        <ul>
+            @foreach (var item in Model.ClaimsByStatus)
+            {
+                <li>@item.Key: @item.Value claims</li>
+            }
+        </ul>
+
+        <h6>Claims by Department:</h6>
+        <ul>
+            @foreach (var item in Model.ClaimsByDepartment)
+            {
+                <li>@item.Key: @item.Value claims</li>
+            }
+        </ul>
+
+        <button class="btn btn-success" onclick="alert('Report would be exported to Excel/PDF in full implementation')">
+            Export Report
+        </button>
+    </div>
+</div>
+
+
+<div class="mt-4">
+    <a href="/Home/Index" class="btn btn-outline-dark">
+        <i class="fas fa-home"></i> Back to Home
+    </a>
+</div>

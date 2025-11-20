@@ -1,0 +1,53 @@
+﻿@model List<AcademicClaimsPortal.Models.Claim>
+
+@{
+    ViewData["Title"] = "All Claims";
+}
+
+<h2>All Claims</h2>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Claim Reference</th>
+            <th>Lecturer</th>
+            <th>Department</th>
+            <th>Hours</th>
+            <th>Rate</th>
+            <th>Total</th>
+            <th>Status</th>
+            <th>Submitted</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var claim in Model)
+        {
+            <tr>
+                <td>@claim.ClaimReference</td>
+                <td>@claim.LecturerName</td>
+                <td>@claim.Department</td>
+                <td>@claim.HoursWorked</td>
+                <td>R @claim.HourlyRate</td>
+                <td>R @claim.TotalAmount</td>
+                <td>
+                    <span class="badge @(claim.Status.Contains("Approved") ? "bg-success" :
+                                                                 claim.Status.Contains("Rejected") ? "bg-danger" : "bg-warning")">
+                    @claim.Status
+                </span>
+            </td>
+            <td>@claim.SubmissionDate.ToString("yyyy-MM-dd")</td>
+        </tr>
+                }
+    </tbody>
+</table>
+
+<div>
+    <a href="/HR/Dashboard" class="btn btn-secondary">Back to Dashboard</a>
+</div>
+
+
+<div class="mt-4">
+    <a href="/Home/Index" class="btn btn-outline-dark">
+        <i class="fas fa-home"></i> Back to Home
+    </a>
+</div>

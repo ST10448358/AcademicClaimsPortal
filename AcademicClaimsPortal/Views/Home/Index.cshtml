@@ -1,0 +1,58 @@
+﻿@{
+    ViewData["Title"] = "Contract Monthly Claim System";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Welcome to Contract Monthly Claim System</h1>
+    <p class="lead">Please select your role to continue</p>
+
+    <div class="row mt-5">
+        <div class="col-md-4">
+            <div class="card role-card">
+                <div class="card-body text-center">
+                    <i class="fas fa-chalkboard-teacher fa-3x text-primary mb-3"></i>
+                    <h3>Lecturer</h3>
+                    <p>Submit lecture claims and track status</p>
+                    <a href="/Home/SelectRole?role=lecturer" class="btn btn-primary btn-lg">Enter as Lecturer</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card role-card">
+                <div class="card-body text-center">
+                    <i class="fas fa-tasks fa-3x text-success mb-3"></i>
+                    <h3>Programme Coordinator and Academic Manager</h3>
+                    <p>Review and approve lecture claims</p>
+                    <a href="/Home/SelectRole?role=coordinator" class="btn btn-success btn-lg">Enter as Coordinator/Manager</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-md-4">
+            <div class="card role-card">
+                <div class="card-body text-center">
+                    <i class="fas fa-chart-bar fa-3x text-info mb-3"></i>
+                    <h3>HR Department</h3>
+                    <p>View reports and manage claims</p>
+                    <a href="/Home/SelectRole?role=hr" class="btn btn-info btn-lg">Enter as HR</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<style>
+    .role-card {
+        transition: transform 0.3s;
+        height: 100%;
+    }
+
+        .role-card:hover {
+            transform: translateY(-5px);
+        }
+
+    .card-body {
+        padding: 2rem 1rem;
+    }
+</style>

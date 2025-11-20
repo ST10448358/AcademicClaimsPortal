@@ -1,0 +1,54 @@
+﻿@model dynamic
+
+@{
+    ViewData["Title"] = "HR Dashboard";
+}
+
+<h2>HR Dashboard - Claims Overview</h2>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="card text-white bg-primary mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Total Claims</h5>
+                <h2>@Model.TotalClaims</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-warning mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Pending</h5>
+                <h2>@Model.PendingClaims</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-success mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Approved</h5>
+                <h2>@Model.ApprovedClaims</h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <div class="card text-white bg-info mb-3">
+            <div class="card-body">
+                <h5 class="card-title">Total Amount</h5>
+                <h2>R @Model.TotalAmount</h2>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="mt-4">
+    <a href="/HR/AllClaims" class="btn btn-secondary">View All Claims</a>
+    <a href="/HR/GenerateReport" class="btn btn-primary">Generate Reports</a>
+</div>
+
+
+<div class="mt-4">
+    <a href="/Home/Index" class="btn btn-outline-dark">
+        <i class="fas fa-home"></i> Back to Home
+    </a>
+</div>

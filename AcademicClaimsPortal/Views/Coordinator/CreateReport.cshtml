@@ -1,0 +1,42 @@
+﻿@{
+    ViewData["Title"] = "Create Report to Manager";
+}
+
+<h2>Create Report to Academic Manager</h2>
+
+<form asp-action="CreateReport" method="post">
+    <div class="form-group">
+        <label for="reportTitle">Report Title:</label>
+        <input type="text" name="reportTitle" class="form-control" required />
+    </div>
+
+    <div class="form-group">
+        <label for="reportContent">Report Content:</label>
+        <textarea name="reportContent" class="form-control" rows="6" required></textarea>
+    </div>
+
+    <div class="form-group">
+        <label for="priority">Priority:</label>
+        <select name="priority" class="form-control" required>
+            <option value="Low">Low</option>
+            <option value="Medium" selected>Medium</option>
+            <option value="High">High</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit Report</button>
+</form>
+
+@if (TempData["ReportSuccess"] != null)
+{
+    <div class="alert alert-success mt-3">
+        @TempData["ReportSuccess"]
+    </div>
+}
+
+<div class="mt-4">
+    <a href="/Coordinator/PendingClaims" class="btn btn-secondary">Back to Claims Review</a>
+    <a href="/Home/Index" class="btn btn-outline-dark">
+        <i class="fas fa-home"></i> Back to Home
+    </a>
+</div>
